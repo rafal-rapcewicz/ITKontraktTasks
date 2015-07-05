@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
 
     <!-- Bootstrap -->
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="Content/Styles/sticky-footer-navbar.css" rel="stylesheet" />
+    <link href="content/styles/sticky-footer-navbar.css" rel="stylesheet" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,10 +19,12 @@
     <![endif]-->
 </head>
 <body>
+
     <div class="page-header text-center">
         <h1>Some Title</h1>
     </div>
 
+    <!-- Begin page content -->
     <div class="row">
         <div class="col-md-2">
             <h2>Left Sidebar</h2>
@@ -30,7 +32,7 @@
         <div class="col-md-8">
             <h2>Main</h2>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 hidden-xs">
             <h2>Right Sidebar</h2>
         </div>
     </div>
@@ -45,5 +47,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="app/app.js"></script>
 </body>
 </html>
