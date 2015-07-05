@@ -4,25 +4,33 @@ var Application;
     var Directives;
     (function (Directives) {
         'use strict';
-        customFocus.$inject = ['$timeout'];
-        function customFocus($timeout) {
+        function pageColumn() {
             return {
                 restrict: 'A',
+                transclude: true,
+                replace: true,
+                scope: { columnClass: "@" },
+                controller: function ($scope, $attrs) {
+                    this.columnClass = "col-md-2";
+                    var init = function () {
+                        switch ($attrs['pageColumn']) {
+                            case PageColumns.LeftSideBar.toString(): $scope.columnClass = "col-md-2";
+                            case PageColumns.MainPanel.toString(): $scope.columnClass = "";
+                            case PageColumns.RightSideBar.toString(): $scope.columnClass = "";
+                        }
+                        $scope.$on('xxx', function (e, n) {
+                            $scope.columnClass = "hidden";
+                        });
+                    };
+                    init();
+                },
+                controllerAs: "ctrl",
+                template: '<div ng-class="ctrl.columnClass"><div ng-transclude></div></div>',
                 link: function ($scope, element, attributes) {
-                    $scope.$watch(attributes.customFocus, function (val) {
-                        if (angular.isDefined(val) && val) {
-                            $timeout(function () { element[0].focus(); });
-                        }
-                    }, true);
-                    element.bind('blur', function () {
-                        if (angular.isDefined(attributes.customFocusLost)) {
-                            $scope.$apply(attributes.customFocusLost);
-                        }
-                    });
                 }
             };
         }
-        Directives.customFocus = customFocus;
+        Directives.pageColumn = pageColumn;
         ;
         (function (PageColumns) {
             PageColumns[PageColumns["LeftSideBar"] = 1] = "LeftSideBar";

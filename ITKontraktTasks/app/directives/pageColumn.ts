@@ -1,25 +1,35 @@
 /// <reference path="../../scripts/typings/_all.d.ts" />
 
 module Application.Directives {
-    'use strict';    
-
-    pageColumn.$inject = ['$timeout'];
-
-    export function pageColumn($timeout: ng.ITimeoutService): ng.IDirective {
+    'use strict';        
+    export function pageColumn(): ng.IDirective {
         return {
             restrict: 'A',
-            link: ($scope: ng.IScope, element: JQuery, attributes: any) => {
-                $scope.$watch(attributes.customFocus, val => {
-                    if (angular.isDefined(val) && val) {
-                        $timeout(() => { element[0].focus(); });
-                    }
-                }, true);
+            transclude: true,
+            replace: true,
+            scope: { columnClass: "@" },
+            controller: function ($scope, $attrs) {
+                this.columnClass = "col-md-2";
 
-                element.bind('blur', () => {
-                    if (angular.isDefined(attributes.customFocusLost)) {
-                        $scope.$apply(attributes.customFocusLost);
+                var init = (): void => {
+
+                    switch ($attrs['pageColumn']) {
+                        case PageColumns.LeftSideBar.toString(): $scope.columnClass = "col-md-2";
+                        case PageColumns.MainPanel.toString(): $scope.columnClass = "";
+                        case PageColumns.RightSideBar.toString(): $scope.columnClass = "";
                     }
-                });
+
+                    $scope.$on('xxx', (e: ng.IAngularEvent, n: any) => {
+                        $scope.columnClass = "hidden";                       
+                    });
+
+                };
+
+                init();                                
+            },
+            controllerAs: "ctrl",
+            template: '<div ng-class="ctrl.columnClass"><div ng-transclude></div></div>',
+            link: ($scope: ng.IScope, element: JQuery, attributes: any) => {                
             }
         };
     };

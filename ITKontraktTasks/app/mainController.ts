@@ -21,7 +21,7 @@ module Application.Controllers {
             switch (pageColumn) {
                 case d.PageColumns.LeftSideBar:
                     this.isLeftbarVisible = !this.isLeftbarVisible;
-                    
+                    this.$scope.$broadcast("xxx", 1);
                 case d.PageColumns.RightSideBar:
                     this.isRightbarVisible = !this.isRightbarVisible;
             };

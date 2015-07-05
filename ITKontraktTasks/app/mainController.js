@@ -16,6 +16,7 @@ var Application;
                     switch (pageColumn) {
                         case d.PageColumns.LeftSideBar:
                             _this.isLeftbarVisible = !_this.isLeftbarVisible;
+                            _this.$scope.$broadcast("xxx", 1);
                         case d.PageColumns.RightSideBar:
                             _this.isRightbarVisible = !_this.isRightbarVisible;
                     }
@@ -28,4 +29,4 @@ var Application;
         Controllers.MainCtrl = MainCtrl;
     })(Controllers = Application.Controllers || (Application.Controllers = {}));
 })(Application || (Application = {}));
-//# sourceMappingURL=mainController.js.map
+//# sourceMappingURL=maincontroller.js.map

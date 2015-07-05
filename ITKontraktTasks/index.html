@@ -18,7 +18,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body ng-controller="mainCtrl as vm">
 
     <div class="page-header text-center">
         <h1>Some Title</h1>
@@ -26,11 +26,15 @@
 
     <!-- Begin page content -->
     <div class="row">
-        <div class="col-md-2">
+        <div page-column="1">
             <h2>Left Sidebar</h2>
         </div>
+        <!--<div class="col-md-2">
+            <h2>Left Sidebar</h2>
+        </div>-->
         <div class="col-md-8">
             <h2>Main</h2>
+            <button ng-click="vm.swap(1)">xxx</button>            
         </div>
         <div class="col-md-2 hidden-xs">
             <h2>Right Sidebar</h2>
@@ -48,6 +52,8 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="node_modules/angular/angular.min.js"></script>
+    <script src="app/directives/pageColumn.js"></script>
+    <script src="app/mainController.js"></script>
     <script src="app/app.js"></script>
 </body>
 </html>
