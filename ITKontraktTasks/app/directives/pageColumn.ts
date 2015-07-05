@@ -6,21 +6,20 @@ module Application.Directives {
         return {
             restrict: 'A',
             transclude: true,
-            replace: true,
-            scope: { columnClass: "@" },
+            replace: true,         
             controller: function ($scope, $attrs) {
-                this.columnClass = "col-md-2";
 
                 var init = (): void => {
 
                     switch ($attrs['pageColumn']) {
-                        case PageColumns.LeftSideBar.toString(): $scope.columnClass = "col-md-2";
-                        case PageColumns.MainPanel.toString(): $scope.columnClass = "";
-                        case PageColumns.RightSideBar.toString(): $scope.columnClass = "";
+                        case PageColumns.LeftSideBar.toString(): this.columnClass = "col-md-2"; break;
+                        case PageColumns.MainPanel.toString(): this.columnClass = ""; break;
+                        case PageColumns.RightSideBar.toString(): this.columnClass = ""; break;
                     }
 
                     $scope.$on('xxx', (e: ng.IAngularEvent, n: any) => {
-                        $scope.columnClass = "hidden";                       
+                        $scope.columnClass = "hidden";
+                        //$scope.$apply();
                     });
 
                 };

@@ -9,17 +9,23 @@ var Application;
                 restrict: 'A',
                 transclude: true,
                 replace: true,
-                scope: { columnClass: "@" },
                 controller: function ($scope, $attrs) {
-                    this.columnClass = "col-md-2";
+                    var _this = this;
                     var init = function () {
                         switch ($attrs['pageColumn']) {
-                            case PageColumns.LeftSideBar.toString(): $scope.columnClass = "col-md-2";
-                            case PageColumns.MainPanel.toString(): $scope.columnClass = "";
-                            case PageColumns.RightSideBar.toString(): $scope.columnClass = "";
+                            case PageColumns.LeftSideBar.toString():
+                                _this.columnClass = "col-md-2";
+                                break;
+                            case PageColumns.MainPanel.toString():
+                                _this.columnClass = "";
+                                break;
+                            case PageColumns.RightSideBar.toString():
+                                _this.columnClass = "";
+                                break;
                         }
                         $scope.$on('xxx', function (e, n) {
                             $scope.columnClass = "hidden";
+                            //$scope.$apply();
                         });
                     };
                     init();
