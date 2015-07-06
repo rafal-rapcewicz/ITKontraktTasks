@@ -16,11 +16,18 @@ var Application;
                     switch (pageColumn) {
                         case d.PageColumns.LeftSideBar:
                             _this.isLeftbarVisible = !_this.isLeftbarVisible;
-                            _this.$scope.$broadcast("xxx", 1);
+                            _this.$scope.$broadcast(d.COLUMNS_CHANGE, d.PageColumns.LeftSideBar, _this.getPageColumnsFlag());
+                            break;
                         case d.PageColumns.RightSideBar:
                             _this.isRightbarVisible = !_this.isRightbarVisible;
+                            _this.$scope.$broadcast(d.COLUMNS_CHANGE, d.PageColumns.RightSideBar, _this.getPageColumnsFlag());
                     }
                     ;
+                };
+                this.getPageColumnsFlag = function () {
+                    return (_this.isLeftbarVisible ? d.PageColumns.LeftSideBar : 0) +
+                        d.PageColumns.MainPanel +
+                        (_this.isRightbarVisible ? d.PageColumns.RightSideBar : 0);
                 };
             }
             MainCtrl.$inject = ["$scope"];

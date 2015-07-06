@@ -21,10 +21,18 @@ module Application.Controllers {
             switch (pageColumn) {
                 case d.PageColumns.LeftSideBar:
                     this.isLeftbarVisible = !this.isLeftbarVisible;
-                    this.$scope.$broadcast("xxx", 1);
+                    this.$scope.$broadcast(d.COLUMNS_CHANGE, d.PageColumns.LeftSideBar, this.getPageColumnsFlag());
+                    break;
                 case d.PageColumns.RightSideBar:
                     this.isRightbarVisible = !this.isRightbarVisible;
+                    this.$scope.$broadcast(d.COLUMNS_CHANGE, d.PageColumns.RightSideBar, this.getPageColumnsFlag());
             };
+        }
+
+        private getPageColumnsFlag = (): number => {
+            return (this.isLeftbarVisible ? d.PageColumns.LeftSideBar : 0) +
+                d.PageColumns.MainPanel +
+                (this.isRightbarVisible ? d.PageColumns.RightSideBar : 0);
         }
 
     }

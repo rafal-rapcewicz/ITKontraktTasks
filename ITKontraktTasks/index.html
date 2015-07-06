@@ -29,14 +29,28 @@
         <div page-column="1">
             <h2>Left Sidebar</h2>
         </div>
-        <!--<div class="col-md-2">
-            <h2>Left Sidebar</h2>
-        </div>-->
-        <div class="col-md-8">
+        
+        <div page-column="2">
             <h2>Main</h2>
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="">
+                    Show left sidebar
+                </label>
+            </div>
+            
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="">
+                    Show right sidebar
+                </label>
+            </div>
+
             <button ng-click="vm.swap(1)">xxx</button>            
         </div>
-        <div class="col-md-2 hidden-xs">
+
+        <div page-column="4">
             <h2>Right Sidebar</h2>
         </div>
     </div>
