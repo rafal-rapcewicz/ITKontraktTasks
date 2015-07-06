@@ -13,37 +13,40 @@ module Application.Directives {
             restrict: 'A',
             transclude: true,
             replace: true,         
-            controller: function ($scope, $attrs) {
-
-                var self = this;
+            //controller: function ($scope, $attrs) {                                               
+            //},
+            //controllerAs: "ctrl",
+            template: '<div ng-class="columnClass"><div ng-transclude></div></div>',
+            scope: {
+                columnClass: "="
+            },
+            link: ($scope: any /*ng.IScope*/, element: JQuery, attributes: any) => {
+                
                 var init = (): void => {
 
-                    switch ($attrs[PAGE_COLUMN]) {
-                        case PageColumns.LeftSideBar.toString(): this.columnClass = MIDDLE_COL + 2; break;
-                        case PageColumns.MainPanel.toString(): this.columnClass = MIDDLE_COL + 8; break;
-                        case PageColumns.RightSideBar.toString(): this.columnClass = MIDDLE_COL + 2; break;
+                    switch (attributes[PAGE_COLUMN]) {
+                        case PageColumns.LeftSideBar.toString(): $scope.columnClass = MIDDLE_COL + 2; break;
+                        case PageColumns.MainPanel.toString(): $scope.columnClass = MIDDLE_COL + 8; break;
+                        case PageColumns.RightSideBar.toString(): $scope.columnClass = MIDDLE_COL + 2; break;
                     }
 
                     $scope.$on(COLUMNS_CHANGE, (e: ng.IAngularEvent, colNo: number, colFlag: number) => {
                         //changing class of swaping column
-                        if (colNo == $attrs[PAGE_COLUMN]) {
-                            self.columnClass = (self.columnClass == HIDDEN_COL) ? MIDDLE_COL + 2 : HIDDEN_COL;
+                        if (colNo == attributes[PAGE_COLUMN]) {
+                            $scope.columnClass = ($scope.columnClass == HIDDEN_COL) ? MIDDLE_COL + 2 : HIDDEN_COL;
                         };
 
                         //adjusting width of main panel column
-                        if ($attrs[PAGE_COLUMN] == PageColumns.MainPanel) {
-                            self.columnClass = MIDDLE_COL + (PageColumns.LeftSideBar && colFlag ? 0 : 2) + 8 +
-                            (PageColumns.RightSideBar && colFlag ? 0 : 2);
+                        if (attributes[PAGE_COLUMN] == PageColumns.MainPanel) {
+                            $scope.columnClass = MIDDLE_COL + ((PageColumns.LeftSideBar & colFlag ? 0 : 2) + 8 +
+                                (PageColumns.RightSideBar & colFlag ? 0 : 2));
                         }
                     });
 
                 };
 
-                init();                                
-            },
-            controllerAs: "ctrl",
-            template: '<div ng-class="ctrl.columnClass"><div ng-transclude></div></div>',
-            link: ($scope: ng.IScope, element: JQuery, attributes: any) => {                
+                init(); 
+
             }
         };
     };

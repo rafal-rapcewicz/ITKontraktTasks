@@ -11,6 +11,8 @@
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="content/styles/sticky-footer-navbar.css" rel="stylesheet" />
 
+    <link href="content/styles/style.min.css" rel="stylesheet" />
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -27,31 +29,44 @@
     <!-- Begin page content -->
     <div class="row">
         <div page-column="1">
-            <h2>Left Sidebar</h2>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2>Left Sidebar</h2>
+                </div>
+            </div>
         </div>
-        
+
         <div page-column="2">
-            <h2>Main</h2>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2>Main</h2>
 
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Show left sidebar
-                </label>
-            </div>
-            
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Show right sidebar
-                </label>
-            </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-checked="vm.isLeftbarVisible" ng-model="vm.isLeftbarVisible" ng-change="vm.swap(1)">
+                            Show left sidebar
+                        </label>
+                    </div>
 
-            <button ng-click="vm.swap(1)">xxx</button>            
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-checked="vm.isRightbarVisible" ng-model="vm.isRightbarVisible" ng-change="vm.swap(4)">
+                            Show right sidebar
+                        </label>
+                    </div>
+
+                    <div hundret-elements></div>
+
+                </div>
+            </div>
         </div>
 
         <div page-column="4">
-            <h2>Right Sidebar</h2>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2>Right Sidebar</h2>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -67,6 +82,7 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="app/directives/pageColumn.js"></script>
+    <script src="app/directives/hundretElements.js"></script>
     <script src="app/mainController.js"></script>
     <script src="app/app.js"></script>
 </body>

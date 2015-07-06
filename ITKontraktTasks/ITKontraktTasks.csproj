@@ -59,6 +59,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\directives\hundretElements.js" />
+    <Content Include="content\styles\style.css">
+      <DependentUpon>style.less</DependentUpon>
+    </Content>
+    <Content Include="content\styles\style.min.css">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
     <Content Include="node_modules\bootstrap\dist\css\bootstrap-theme.css.map" />
     <Content Include="node_modules\bootstrap\dist\css\bootstrap.css.map" />
     <Content Include="node_modules\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
@@ -155,6 +162,11 @@
     <Content Include="app\app.js.map" />
     <Content Include="app\directives\pageColumn.js.map" />
     <Content Include="app\mainController.js.map" />
+    <Content Include="app\directives\hundretElements.js.map" />
+    <Content Include="content\styles\style.less" />
+    <Content Include="content\styles\style.css.map">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -206,6 +218,7 @@
   <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="app\app.ts" />
+    <TypeScriptCompile Include="app\directives\hundretElements.ts" />
     <TypeScriptCompile Include="app\directives\pageColumn.ts" />
     <TypeScriptCompile Include="app\mainController.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />

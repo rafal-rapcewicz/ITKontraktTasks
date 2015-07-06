@@ -15,11 +15,11 @@ var Application;
                 this.swap = function (pageColumn) {
                     switch (pageColumn) {
                         case d.PageColumns.LeftSideBar:
-                            _this.isLeftbarVisible = !_this.isLeftbarVisible;
+                            //this.isLeftbarVisible = !this.isLeftbarVisible;
                             _this.$scope.$broadcast(d.COLUMNS_CHANGE, d.PageColumns.LeftSideBar, _this.getPageColumnsFlag());
                             break;
                         case d.PageColumns.RightSideBar:
-                            _this.isRightbarVisible = !_this.isRightbarVisible;
+                            //this.isRightbarVisible = !this.isRightbarVisible;
                             _this.$scope.$broadcast(d.COLUMNS_CHANGE, d.PageColumns.RightSideBar, _this.getPageColumnsFlag());
                     }
                     ;

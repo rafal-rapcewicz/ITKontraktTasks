@@ -20,11 +20,11 @@ module Application.Controllers {
         public swap = (pageColumn: d.PageColumns): void => {
             switch (pageColumn) {
                 case d.PageColumns.LeftSideBar:
-                    this.isLeftbarVisible = !this.isLeftbarVisible;
+                    //this.isLeftbarVisible = !this.isLeftbarVisible;
                     this.$scope.$broadcast(d.COLUMNS_CHANGE, d.PageColumns.LeftSideBar, this.getPageColumnsFlag());
                     break;
                 case d.PageColumns.RightSideBar:
-                    this.isRightbarVisible = !this.isRightbarVisible;
+                    //this.isRightbarVisible = !this.isRightbarVisible;
                     this.$scope.$broadcast(d.COLUMNS_CHANGE, d.PageColumns.RightSideBar, this.getPageColumnsFlag());
             };
         }
