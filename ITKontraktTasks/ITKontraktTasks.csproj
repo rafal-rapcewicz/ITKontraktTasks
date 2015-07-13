@@ -221,6 +221,8 @@
     <TypeScriptCompile Include="app\directives\hundretElements.ts" />
     <TypeScriptCompile Include="app\directives\pageColumn.ts" />
     <TypeScriptCompile Include="app\mainController.ts" />
+    <TypeScriptCompile Include="protractor\conf.ts" />
+    <TypeScriptCompile Include="protractor\hundretElements\test.spec.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
@@ -228,6 +230,7 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-route.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jasmine\jasmine.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\_all.d.ts" />
   </ItemGroup>
